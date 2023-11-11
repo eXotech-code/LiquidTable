@@ -11,6 +11,7 @@
 		3B3EB3FA2AFFC21600F57A26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EB3F92AFFC21600F57A26 /* ContentView.swift */; };
 		3B3EB3FC2AFFC21700F57A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3EB3FB2AFFC21700F57A26 /* Assets.xcassets */; };
 		3B3EB3FF2AFFC21700F57A26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3EB3FE2AFFC21700F57A26 /* Preview Assets.xcassets */; };
+		3B3EB4092B0027E500F57A26 /* CSVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EB4082B0027E500F57A26 /* CSVImporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		3B3EB3FB2AFFC21700F57A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B3EB3FE2AFFC21700F57A26 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B3EB4002AFFC21700F57A26 /* LiquidTable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiquidTable.entitlements; sourceTree = "<group>"; };
+		3B3EB4082B0027E500F57A26 /* CSVImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				3B3EB3F72AFFC21600F57A26 /* LiquidTableApp.swift */,
 				3B3EB3F92AFFC21600F57A26 /* ContentView.swift */,
+				3B3EB4082B0027E500F57A26 /* CSVImporter.swift */,
 				3B3EB3FB2AFFC21700F57A26 /* Assets.xcassets */,
 				3B3EB4002AFFC21700F57A26 /* LiquidTable.entitlements */,
 				3B3EB3FD2AFFC21700F57A26 /* Preview Content */,
@@ -141,6 +144,7 @@
 			files = (
 				3B3EB3FA2AFFC21600F57A26 /* ContentView.swift in Sources */,
 				3B3EB3F82AFFC21600F57A26 /* LiquidTableApp.swift in Sources */,
+				3B3EB4092B0027E500F57A26 /* CSVImporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
