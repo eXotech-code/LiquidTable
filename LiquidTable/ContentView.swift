@@ -52,14 +52,26 @@ struct ContentView: View {
     @State private var presentFileImporter = true
     @State private var selectedTableType: TableType = .bordered
     @State private var selectedSeparator: SeparatorType = .comma
-    @State private var csvFile = CSVFile()
+    @State private var csvFile: CSVFile?
+    @State private var presentAlert = false
+    @State private var importError: CSVImporterError? = nil
     
     func setWindowTitle(_ selectedCSVFile: URL) {
         windowTitle = selectedCSVFile.lastPathComponent
     }
     
     var body: some View {
-        Spacer()
+        HStack {
+            if csvFile?.contentView != nil {
+                TableView(csvFile!)
+            } else {
+                Spacer()
+            }
+            VStack {
+                Text("Columns")
+                    .font(.headline)
+            }
+        }
             .navigationTitle(windowTitle)
             .toolbar {
                 ControlGroup {
@@ -87,20 +99,34 @@ struct ContentView: View {
                 
             }
             .fileImporter(isPresented: $presentFileImporter, allowedContentTypes: [.plainText]) { result in
+                defer { presentFileImporter = false }
                 switch result {
                 case .success(let url):
                     if url.startAccessingSecurityScopedResource() {
                         defer { url.stopAccessingSecurityScopedResource() }
                         setWindowTitle(url)
-                        if let inferredSep = try? csvFile.load(url) {
-                            print(inferredSep)
+                        csvFile = CSVFile(url)
+                        if csvFile!.importError != nil {
+                            presentAlert = true
+                            importError = csvFile!.importError
+                            return
+                        }
+                        if let inferredSep = try? csvFile!.detectSeparator() {
                             selectedSeparator = inferredSep
                         }
+                        csvFile!.parseCSV(separator: selectedSeparator)
                     }
                 case .failure(let err):
                     print(err)
                 }
-                presentFileImporter = false
+            }
+            .alert(isPresented: $presentAlert, error: importError) {
+                Button("Choose Another File") {
+                    presentFileImporter = true
+                }
+                Button("Quit LiquidTable") {
+                    NSApplication.shared.terminate(nil)
+                }
             }
     }
 }
